@@ -5,10 +5,10 @@ import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 
-export const LevelUp = () => (
+export const BirdBox = () => (
     <>
         <Route render={() => {
-            if (localStorage.getItem("lu_token")) {
+            if (localStorage.getItem("bb_token")) {
                 return <>
                     <Route>
                         <NavBar />
