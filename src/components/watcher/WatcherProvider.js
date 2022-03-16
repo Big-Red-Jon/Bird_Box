@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 
 export const WatcherContext = React.createContext();
+const URL = "http://localhost:8000"
 
 export const WatcherProvider = (props) => {
 
     const [currentWatcher, setCurrentWatcher] = useState({});
+    const [sightings, setSightings] = useState([])
 
     const getCurrentWatcher = () => {
-        return fetch("http://localhost:8000/profile", {
+        return fetch(`${URL}/profile`, {
             headers: {
                 Authorization: `Token ${localStorage.getItem("bb_token")}`,
             },
@@ -16,9 +18,21 @@ export const WatcherProvider = (props) => {
             .then(setCurrentWatcher);
     };
 
+    const getSightingsByWatcher = (id) => {
+        return fetch(`${URL}/profile/${id}/sightings`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem("dd_token")}`,
+            },
+        })
+            .then((response) => response.json())
+            .then(setSightings)
+    }
+
     return (
-        <ProfileContext.Provider value={{ currentWatcher, getCurrentWatcher }}>
+        <WatcherContext.Provider value={{
+            currentWatcher, getCurrentWatcher, getSightingsByWatcher
+        }}>
             {props.children}
-        </ProfileContext.Provider>
+        </WatcherContext.Provider>
     );
 };
