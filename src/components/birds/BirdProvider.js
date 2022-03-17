@@ -18,7 +18,7 @@ export const BirdProvider = (props) => {
     }
 
     const getBirdById = (birdId) => {
-        return fetch(`${URL}/birds/${birdId}
+        return fetch(`${URL}/birds/detail/${birdId}
         `)
             .then(res => res.json())
     }

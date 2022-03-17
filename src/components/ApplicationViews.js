@@ -4,6 +4,8 @@ import { Route } from "react-router-dom"
 import { WatcherProvider } from "./watcher/WatcherProvider"
 //Sightings
 import { SightingProvider } from "./sighting/SightingProvider"
+import { SightingList } from "./sighting/SightingList"
+import { SightForm } from "./sighting/SightingForm"
 // import { SightingList } from "./sighting/SightingList"
 //Birds
 import { BirdProvider } from "./birds/BirdProvider"
@@ -11,7 +13,7 @@ import { BirdList } from "./birds/BirdList"
 import { BirdDetail } from "./birds/BirdDetail"
 // All Users
 import { UsersProvider } from "./users/UserProviders"
-import { SightingList } from "./sighting/SightingList"
+
 
 
 export const ApplicationViews = () => {
@@ -34,13 +36,15 @@ export const ApplicationViews = () => {
                                 <h1>Birds</h1>
                                 <BirdList />
                             </Route>
-                            <Route exact path="/Birds/:BirdId(\d+)">
+                            <Route exact path="/Birds/detail/:BirdId(\d+)">
                                 <BirdDetail />
                             </Route>
                             <Route exact path="/Sightings">
                                 {/* <SightingSearch /> */}
-                                <h1>SIGHTINGS</h1>
                                 <SightingList />
+                            </Route>
+                            <Route exact path="/Sightings/Create">
+                                <SightForm />
                             </Route>
                             <Route exact path="/Users">
                                 <h1>All USERS</h1>

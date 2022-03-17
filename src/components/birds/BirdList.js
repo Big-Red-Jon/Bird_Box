@@ -16,7 +16,7 @@ export const BirdList = () => {
 
     return (
         <>
-            <article>
+            <article className="BirdItems">
                 {birds.map((bird) => {
                     return (
                         <section key={`bird--${bird.id}`}>
@@ -26,7 +26,7 @@ export const BirdList = () => {
                                 <p>{bird.location.country}</p>
                                 <p>{bird.location.state}</p>
                                 <img alt="bird" src={bird.bird_img} /><br />
-                                <button onClick={() => history.push(`/birds/${bird.id}`)}>
+                                <button onClick={() => history.push(`/birds/detail/${bird.id}`)}>
                                     See More About this Bird</button>
                                 <button onClick={() => history.push(``)}>
                                     Add Bird To Sighting
