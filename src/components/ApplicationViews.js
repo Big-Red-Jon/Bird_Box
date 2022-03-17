@@ -6,13 +6,13 @@ import { WatcherProvider } from "./watcher/WatcherProvider"
 import { SightingProvider } from "./sighting/SightingProvider"
 import { SightingList } from "./sighting/SightingList"
 import { SightForm } from "./sighting/SightingForm"
-// import { SightingList } from "./sighting/SightingList"
 //Birds
 import { BirdProvider } from "./birds/BirdProvider"
 import { BirdList } from "./birds/BirdList"
 import { BirdDetail } from "./birds/BirdDetail"
 // All Users
 import { UsersProvider } from "./users/UserProviders"
+import { ProfilePage } from "./watcher/WatcherProfile"
 
 
 
@@ -30,7 +30,7 @@ export const ApplicationViews = () => {
                                 <h1>HELLO</h1>
                             </Route>
                             <Route exact path="/Profile">
-                                <h1>Profile</h1>
+                                <ProfilePage />
                             </Route>
                             <Route exact path="/Birds">
                                 <h1>Birds</h1>

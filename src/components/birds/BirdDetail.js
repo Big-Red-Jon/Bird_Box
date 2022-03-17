@@ -11,6 +11,12 @@ export const BirdDetail = () => {
         getBirds();
     }, []);
 
+    // useEffect(() => {
+    //     if (bird.id) {
+    //         getBirdById(bird.id);
+    //     }
+    // }, [bird])
+
     return (
         <>
             <article>

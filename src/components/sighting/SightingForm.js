@@ -86,9 +86,9 @@ export const SightForm = () => {
                         {birds.map((bird) => (
                             <option
                                 key={bird.id}
-                                value={bird.common_name.CommonName}
+                                value={bird.id}
                             >
-                                {sighting.bird}
+                                {bird.common_name}
                             </option>
                         ))}
                     </select>
@@ -103,7 +103,7 @@ export const SightForm = () => {
                         onChange={editInputChange}
                     >
                         <option value="0">Select A Location ...</option>
-                        {birds.map((bird) => (
+                        {locations.map((location) => (
                             <option
                                 key={location.id}
                                 value={location.region}

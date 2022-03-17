@@ -5,32 +5,55 @@ const URL = "http://localhost:8000"
 
 export const WatcherProvider = (props) => {
 
-    const [currentWatcher, setCurrentWatcher] = useState({});
+    const [profile, setProfile] = useState({});
     const [sightings, setSightings] = useState([])
 
     const getCurrentWatcher = () => {
-        return fetch(`${URL}/profile`, {
+        return fetch(`${URL}/watcher`, {
             headers: {
                 Authorization: `Token ${localStorage.getItem("bb_token")}`,
             },
         })
             .then((response) => response.json())
-            .then(setCurrentWatcher);
+            .then(setProfile);
     };
 
     const getSightingsByWatcher = (id) => {
-        return fetch(`${URL}/profile/${id}/sightings`, {
+        return fetch(`${URL}/watcher/${id}/sightings`, {
             headers: {
-                Authorization: `Token ${localStorage.getItem("dd_token")}`,
+                Authorization: `Token ${localStorage.getItem("bb_token")}`,
             },
         })
             .then((response) => response.json())
             .then(setSightings)
     }
 
+    const editWatcher = (watcher) => {
+        return fetch(`${URL}/watcher/${watcher}`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem("bb_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(sighting)
+        })
+            .then(getCurrentWatcher)
+    }
+
+    const deleteWatcher = (watcherId) => {
+        return fetch(`${URL}/watcher/${watcherId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Token ${localStorage.getItem("bb_token")}`,
+            },
+        })
+            .then(getCurrentWatcher)
+    }
+
+
+
     return (
         <WatcherContext.Provider value={{
-            currentWatcher, getCurrentWatcher, getSightingsByWatcher
+            profile, getCurrentWatcher, getSightingsByWatcher, editWatcher, deleteWatcher, sightings
         }}>
             {props.children}
         </WatcherContext.Provider>
