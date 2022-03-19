@@ -20,7 +20,8 @@ export const SightingProvider = (props) => {
         return fetch(`${URL}/sightings`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Token ${localStorage.getItem("bb_token")}`,
             },
             body: JSON.stringify(sightingSelect)
         })

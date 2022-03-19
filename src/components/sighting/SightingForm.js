@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { SightingContext } from "./SightingProvider"
 import { BirdContext } from "../birds/BirdProvider"
+import { LocationContext } from "../locations/LocationProvider"
 import { useHistory, useParams } from "react-router-dom"
 import DatePicker from "react-datepicker";
 
@@ -8,6 +9,7 @@ import DatePicker from "react-datepicker";
 export const SightForm = () => {
     const { addSighting, getSightingById, updateSighting } = useContext(SightingContext)
     const { birds, getBirds } = useContext(BirdContext)
+    const { locations, getLocations } = useContext(LocationContext)
 
     const [sighting, setSighting] = useState({
         id: 0,
@@ -17,7 +19,7 @@ export const SightForm = () => {
         sighted: ""
     })
 
-    const FORMAT = "MM/dd/yyyy"
+    const FORMAT = "yyyy/MM/dd"
     const { sightingId } = useParams();
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
@@ -34,10 +36,15 @@ export const SightForm = () => {
     }, [])
 
     useEffect(() => {
+        getLocations()
+    }, [])
+
+    useEffect(() => {
         if (sightingId) {
             getSightingById(sightingId)
                 .then(sighting => {
                     setSighting(sighting)
+                    setReceiveDate(Date.parse(lead.dateReceived.substring(0, 10).replace("-", "/")))
                     setIsLoading(false)
                 })
         } else {
@@ -55,7 +62,7 @@ export const SightForm = () => {
                 bird: parseInt(sighting.bird),
                 location: parseInt(sighting.location),
                 watcher: currentWatcher,
-                sighted: sighting.sighted
+                sighted: receiveDate || sighting.sighted
             })
                 .then(() => history.push(`/sightings`))
         } else {
@@ -65,7 +72,7 @@ export const SightForm = () => {
                 watcher: currentWatcher,
                 sighted: sighting.sighted
             })
-                .then(() => history.push(`sightings`))
+                .then(() => history.push(`/sightings`))
         }
     }
 
@@ -73,7 +80,7 @@ export const SightForm = () => {
 
     return (
         <>
-            <h2> {sightingId ? <>Updated Sighting</> : <>Add New Sighting</>}</h2>
+            <h2> {sightingId ? <>Update Sighting</> : <>Add New Sighting</>}</h2>
             <fieldset>
                 <div>
                     <label htmlFor="Bird">Bird: </label>
@@ -81,6 +88,7 @@ export const SightForm = () => {
                         name="bird"
                         value={sighting.bird}
                         onChange={editInputChange}
+                        id="bird"
                     >
                         <option value="0">Select A Bird ...</option>
                         {birds.map((bird) => (
@@ -88,7 +96,7 @@ export const SightForm = () => {
                                 key={bird.id}
                                 value={bird.id}
                             >
-                                {bird.common_name}
+                                {bird.common_name.CommonName}
                             </option>
                         ))}
                     </select>
@@ -101,14 +109,15 @@ export const SightForm = () => {
                         name="location"
                         value={sighting.location}
                         onChange={editInputChange}
+                        id="location"
                     >
-                        <option value="0">Select A Location ...</option>
+                        <option value="0">Select A State ...</option>
                         {locations.map((location) => (
                             <option
                                 key={location.id}
-                                value={location.region}
+                                value={location.id}
                             >
-                                {sighting.location}
+                                {location.state}
                             </option>
                         ))}
                     </select>

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useParams } from "react"
 import { BirdContext } from "./BirdProvider.js"
-// import { BirdDetail } from "./BirdDetail.js";
+import { BirdDetail } from "./BirdDetail.js";
 import "./Bird.css"
 import { useHistory } from "react-router-dom";
 

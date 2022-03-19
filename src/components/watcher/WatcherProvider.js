@@ -9,7 +9,7 @@ export const WatcherProvider = (props) => {
     const [sightings, setSightings] = useState([])
 
     const getCurrentWatcher = () => {
-        return fetch(`${URL}/watcher`, {
+        return fetch(`${URL}/watchers`, {
             headers: {
                 Authorization: `Token ${localStorage.getItem("bb_token")}`,
             },
@@ -19,7 +19,7 @@ export const WatcherProvider = (props) => {
     };
 
     const getSightingsByWatcher = (id) => {
-        return fetch(`${URL}/watcher/${id}/sightings`, {
+        return fetch(`${URL}/watchers/${id}/sightings`, {
             headers: {
                 Authorization: `Token ${localStorage.getItem("bb_token")}`,
             },
@@ -29,7 +29,7 @@ export const WatcherProvider = (props) => {
     }
 
     const editWatcher = (watcher) => {
-        return fetch(`${URL}/watcher/${watcher}`, {
+        return fetch(`${URL}/watchers/${watcher}`, {
             headers: {
                 Authorization: `Token ${localStorage.getItem("bb_token")}`,
                 "Content-Type": "application/json"
@@ -40,7 +40,7 @@ export const WatcherProvider = (props) => {
     }
 
     const deleteWatcher = (watcherId) => {
-        return fetch(`${URL}/watcher/${watcherId}`, {
+        return fetch(`${URL}/watchers/${watcherId}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Token ${localStorage.getItem("bb_token")}`,

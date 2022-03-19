@@ -10,31 +10,31 @@ export const ProfilePage = () => {
     }, []);
 
 
-    useEffect(() => {
-        if (profile.watcher) {
-            getSightingsByWatcher(profile.watcher.id)
-        }
-    }, [profile])
+    // useEffect(() => {
+    //     if (profile.watcher) {
+    //         getSightingsByWatcher(profile.watcher.id)
+    //     }
+    // }, [profile])
 
     return (
         <>
-            <h2>{profile.watcher?.user.first_name} {profile.watcher?.user.last_name}</h2>
+            <h2>{profile.watchers?.user.first_name} {profile.watchers?.user.last_name}</h2>
             <section className="profile">
                 <div className="user_info">
                     <div>
-                        {profile.watcher?.profile_image_url}
+                        Test: {profile.watchers}
                     </div>
                     <div>
-                        Age: {profile.watcher?.region_id.country}
+                        Age: {profile.watchers?.region_id.country}
                     </div>
                     <div>
-                        Created on {profile.watcher?.created_on}
+                        Created on {profile.watchers?.created_on}
                     </div>
                 </div>
             </section>
             <section className="posts">
                 <div className="user_posts">
-                    Posts: {profile.watcher?.sighting.bird}
+                    Sightings: {profile.watchers?.sighting.bird}
                 </div>
             </section>
         </>

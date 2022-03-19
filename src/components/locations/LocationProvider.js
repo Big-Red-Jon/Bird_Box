@@ -18,17 +18,17 @@ export const LocationProvider = (props) => {
     }
 
     const getLocationById = (LocationId) => {
-        return fetch(`${URL}/birds/${LocationId}
+        return fetch(`${URL}/locations/${LocationId}
         `)
             .then(res => res.json())
     }
 
     return (
-        <BirdContext.Provider value={{
+        <LocationContext.Provider value={{
             locations, getLocations, getLocationById, searchTerms, setSearchTerms
         }}>
             {props.children}
-        </BirdContext.Provider>
+        </LocationContext.Provider>
     )
 
 }
