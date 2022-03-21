@@ -38,7 +38,6 @@ export const ApplicationViews = () => {
                                     <Homepage />
                                 </Route>
                                 <Route exact path="/Birds">
-                                    <h1>Birds</h1>
                                     <BirdList />
                                 </Route>
                                 <Route exact path="/Birds/detail/:birdId(\d+)">
@@ -54,7 +53,7 @@ export const ApplicationViews = () => {
                                 <Route exact path="/Sightings/Create">
                                     <SightForm />
                                 </Route>
-                                <Route path="/Sightings/Edit/:sightingId(\d)">
+                                <Route path="/Sightings/Edit/:sightingId(\d+)">
                                     <SightForm />
                                 </Route>
 

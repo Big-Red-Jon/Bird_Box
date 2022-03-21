@@ -22,43 +22,49 @@ export const BirdList = () => {
 
     return (
         <>
-            <article className="BirdItems">
-                {birds && birds.map((bird) => {
-                    return (
-                        <section key={`bird--${bird.id}`}>
-                            <div>
-                                <p>{bird.common_name.CommonName}</p>
-                                <img alt="bird" src={bird.bird_img} /><br />
-                                {/* <button onClick={() => history.push(`/birds/detail/${bird.id}`)}>
-                                    See More About this Bird</button> */}
-                                {/* <BirdDetail key={bird.id} bird={bird} /> */}
-                                <div>
-                                    <h3>States Found in:</h3>
-                                    {bird.location && bird.location.map((local) => {
-                                        return (
-                                            <section key={`bird--${bird.id}`}>
-                                                <div>
-                                                    <p>{local?.state}</p>
-                                                    {/* <p>Country: {local?.country}</p> */}
-                                                </div>
-                                            </section>
-                                        )
-                                    })}
-                                </div>
-                                <h3>Taxonomy</h3>
-                                <p>Kingdom: {bird.common_name.Kingdom}</p>
-                                <p>Phylum: {bird.common_name.Phylum}</p>
-                                <p>Class: {bird.common_name.Class}</p>
-                                <p>Order: {bird.common_name.Order}</p>
-                                <p>Family: {bird.common_name.Family}</p>
-                                <p>Genus: {bird.common_name.Genus}</p>
-                                <p>Species: {bird.common_name.Species}</p>
 
-                                <button onClick={() => history.push(`/Sightings/Create`)}>Add Bird to Sightings</button><br />
-                            </div>
-                        </section>
-                    )
-                })}
+
+
+            <article className="BirdItems">
+                <h1>All Birds</h1>
+                <div className="allCards">
+                    {birds && birds.map((bird) => {
+                        return (
+                            <section className="birdcard" key={`bird--${bird.id}`}>
+                                <div className="birdcontainer">
+                                    <h3>{bird.common_name.CommonName}</h3>
+                                    <img alt="bird" src={bird.bird_img} /><br />
+                                    <div className="states">
+                                        <h3>States Found in:</h3>
+                                        {bird.location && bird.location.map((local) => {
+                                            return (
+                                                <section key={`bird--${bird.id}`}>
+                                                    <ul>
+                                                        <li>{local?.state}</li>
+                                                        {/* <p>Country: {local?.country}</p> */}
+                                                    </ul>
+                                                </section>
+                                            )
+                                        })}
+                                    </div>
+                                    <div className="taxo">
+                                        <h4>Taxonomy</h4>
+                                        <ol>
+                                            <li>Kingdom: {bird.common_name.Kingdom}</li>
+                                            <li>Phylum: {bird.common_name.Phylum}</li>
+                                            <li>Class: {bird.common_name.Class}</li>
+                                            <li>Order: {bird.common_name.Order}</li>
+                                            <li>Family: {bird.common_name.Family}</li>
+                                            <li>Genus: {bird.common_name.Genus}</li>
+                                            <li>Species: {bird.common_name.Species}</li>
+                                        </ol>
+                                    </div>
+                                    {/* <button className="birdButton" onClick={() => history.push(`/Sightings/Create`)}>Add Bird to Sightings</button><br /> */}
+                                </div>
+                            </section>
+                        )
+                    })}
+                </div>
             </article>
         </>
     );
