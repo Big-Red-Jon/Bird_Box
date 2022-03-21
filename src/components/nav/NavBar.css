@@ -1,10 +1,14 @@
 .navbar {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
+    justify-content: center;
+    background-color: lightblue;
+    padding-top: 25px;
+    padding-bottom:  25px;
 }
 
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
+
 }

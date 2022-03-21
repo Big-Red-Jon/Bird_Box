@@ -15,14 +15,14 @@ export const SightForm = () => {
         bird: 0,
         location: 0,
         watcher: 0,
-        sighted: ""
+        sighted: new Date()
     })
 
-    // const FORMAT = "YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]"
+    const FORMAT = "YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]"
     const { sightingId } = useParams();
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
-    // const [receiveDate, setReceiveDate] = useState(new Date())
+
 
     const editInputChange = (event) => {
         const newSighting = { ...sighting }
@@ -43,8 +43,6 @@ export const SightForm = () => {
             getSightingById(sightingId)
                 .then(sighting => {
                     setSighting(sighting)
-                    // setReceiveDate(Date(sighting.sighted.substring(0, 10).replace("-", "/")))
-                    //Problem is here
                     setIsLoading(false)
                 })
         } else {

@@ -27,7 +27,7 @@ export const Login = () => {
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem("bb_token", res.token)
-                    history.push("/")
+                    history.push("/Home")
                 }
                 else {
                     invalidDialog.current.showModal()

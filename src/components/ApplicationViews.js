@@ -17,14 +17,14 @@ import { UsersProvider } from "./users/UserProviders"
 import { ProfilePage } from "./auth/Profile"
 //Locations
 import { LocationProvider } from "./locations/LocationProvider"
-
-
+//Home
+import { Homepage } from "./home/MainPage"
 
 export const ApplicationViews = () => {
     return <>
         <main style={{
             margin: "5rem 2rem",
-            backgroundColor: "lightgoldenrodyellow"
+            backgroundColor: "#66CDAA"
         }}>
 
             <WatcherProvider>
@@ -34,7 +34,8 @@ export const ApplicationViews = () => {
                             <UsersProvider>
 
                                 <Route exact path="/Home">
-                                    <h1>HELLO</h1>
+
+                                    <Homepage />
                                 </Route>
                                 <Route exact path="/Birds">
                                     <h1>Birds</h1>
