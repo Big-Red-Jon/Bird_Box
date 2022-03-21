@@ -3,7 +3,6 @@ import { SightingContext } from "./SightingProvider"
 import { BirdContext } from "../birds/BirdProvider"
 import { LocationContext } from "../locations/LocationProvider"
 import { useHistory, useParams } from "react-router-dom"
-import DatePicker from "react-datepicker";
 
 
 export const SightForm = () => {
@@ -19,11 +18,11 @@ export const SightForm = () => {
         sighted: ""
     })
 
-    const FORMAT = "yyyy/MM/dd"
+    // const FORMAT = "YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]"
     const { sightingId } = useParams();
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(true);
-    const [receiveDate, setReceiveDate] = useState(new Date())
+    // const [receiveDate, setReceiveDate] = useState(new Date())
 
     const editInputChange = (event) => {
         const newSighting = { ...sighting }
@@ -44,7 +43,8 @@ export const SightForm = () => {
             getSightingById(sightingId)
                 .then(sighting => {
                     setSighting(sighting)
-                    setReceiveDate(Date.parse(lead.dateReceived.substring(0, 10).replace("-", "/")))
+                    // setReceiveDate(Date(sighting.sighted.substring(0, 10).replace("-", "/")))
+                    //Problem is here
                     setIsLoading(false)
                 })
         } else {
@@ -62,7 +62,7 @@ export const SightForm = () => {
                 bird: parseInt(sighting.bird),
                 location: parseInt(sighting.location),
                 watcher: currentWatcher,
-                sighted: receiveDate || sighting.sighted
+                sighted: sighting.sighted
             })
                 .then(() => history.push(`/sightings`))
         } else {
@@ -83,10 +83,11 @@ export const SightForm = () => {
             <h2> {sightingId ? <>Update Sighting</> : <>Add New Sighting</>}</h2>
             <fieldset>
                 <div>
-                    <label htmlFor="Bird">Bird: </label>
+                    <label htmlFor="bird" name="bird">Bird: </label>
                     <select
-                        name="bird"
+                        htmlFor="bird" name="bird"
                         value={sighting.bird}
+                        selected={sighting.bird.id}
                         onChange={editInputChange}
                         id="bird"
                     >
@@ -104,10 +105,10 @@ export const SightForm = () => {
             </fieldset>
             <fieldset>
                 <div>
-                    <label htmlFor="Location">Location: </label>
+                    <label >Location: </label>
                     <select
-                        name="location"
-                        value={sighting.location}
+                        htmlFor="location" name="location"
+                        value={sighting.location.state}
                         onChange={editInputChange}
                         id="location"
                     >
@@ -124,10 +125,12 @@ export const SightForm = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="form-group">
-                    <label htmlFor="sighted"> Date Sighted: </label>
-                    <DatePicker className="form--item" id="sighted" dateFormat={FORMAT}
-                        selected={receiveDate} onChange={(FORMAT) => setReceiveDate(FORMAT)} />
+                <div>
+                    <label htmlFor="date">Date of Trip:</label>
+                    <input type="date" id="date" name="date" required autoFocus className="form-control"
+                        placeholder="Choose Date" onChange={editInputChange}
+                        default={sighting.sighted} />
+
                 </div>
             </fieldset>
             <button disabled={isLoading}

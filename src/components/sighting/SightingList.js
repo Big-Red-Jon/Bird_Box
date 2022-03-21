@@ -5,11 +5,21 @@ import "./Sighting.css"
 import { useHistory } from "react-router-dom";
 
 export const SightingList = () => {
-    const { sightings, getSightings } = useContext(SightingContext)
+    const { sightings, getSightings, deleteSighting } = useContext(SightingContext)
     useEffect(() => {
         getSightings();
     }, []);
 
+    const handleRelease = (e) => {
+        deleteSighting(e.target.id)
+            .then(() => {
+                history.push("/sightings")
+            })
+    }
+
+
+
+    // const [filteredLeads, setFiltered] = useState([])
     const history = useHistory()
 
     return (
@@ -22,10 +32,11 @@ export const SightingList = () => {
                         <section key={`sighting--${sighting.id}`}>
                             <div>
                                 <img className="sightImg" alt="bird" src={sighting.bird.bird_img} />
-                                <p>{sighting.location.region}</p>
-                                <p>{sighting.bird.common_name.CommonName}</p>
-                                <p>{sighting.watcher.age}</p>
-                                <button onClick={() => history.push(`/Sightings/Edit/${sighting.id}`)}>Edit Sighting</button>
+                                <p>Bird: {sighting.bird.common_name.CommonName}</p>
+                                <p>Spotted In {sighting.location.state}</p>
+
+                                <button id={sighting.id} onClick={() => history.push(`/Sightings/Edit/${sighting.id}`)}>Edit Sighting</button>
+                                <button id={sighting.id} onClick={(e) => handleRelease(e)}>Delete</button>
                             </div>
                         </section>
                     )

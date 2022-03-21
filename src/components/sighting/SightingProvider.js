@@ -33,7 +33,8 @@ export const SightingProvider = (props) => {
         return fetch(`${URL}/sightings/${sighting.id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Token ${localStorage.getItem("bb_token")}`
             },
             body: JSON.stringify(sighting)
         })
@@ -43,14 +44,21 @@ export const SightingProvider = (props) => {
 
     const deleteSighting = sightingId => {
         return fetch(`${URL}/sightings/${sightingId}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                Authorization: `Token ${localStorage.getItem("bb_token")}`,
+            },
         })
             .then(getSightings)
+
     }
 
     const getSightingById = (sightingId) => {
-        return fetch(`${URL}/sightings/${sightingId}
-        `)
+        return fetch(`${URL}/sightings/${sightingId}`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem("bb_token")}`,
+            },
+        })
             .then(res => res.json())
     }
 

@@ -18,9 +18,11 @@ export const BirdProvider = (props) => {
     }
 
     const getBirdById = (birdId) => {
-        return fetch(`${URL}/birds/detail/${birdId}
-        `)
-            .then(res => res.json())
+        return fetch(`${URL}/birds/detail/${birdId}`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem("bb_token")}`,
+            },
+        }).then(res => res.json())
     }
 
     return (

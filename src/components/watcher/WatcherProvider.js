@@ -5,7 +5,7 @@ const URL = "http://localhost:8000"
 
 export const WatcherProvider = (props) => {
 
-    const [profile, setProfile] = useState({});
+    const [currentWatcher, setCurrentWatcher] = useState({});
     const [sightings, setSightings] = useState([])
 
     const getCurrentWatcher = () => {
@@ -15,7 +15,7 @@ export const WatcherProvider = (props) => {
             },
         })
             .then((response) => response.json())
-            .then(setProfile);
+            .then(setCurrentWatcher);
     };
 
     const getSightingsByWatcher = (id) => {
@@ -53,7 +53,7 @@ export const WatcherProvider = (props) => {
 
     return (
         <WatcherContext.Provider value={{
-            profile, getCurrentWatcher, getSightingsByWatcher, editWatcher, deleteWatcher, sightings
+            currentWatcher, getCurrentWatcher, getSightingsByWatcher, editWatcher, deleteWatcher, sightings
         }}>
             {props.children}
         </WatcherContext.Provider>

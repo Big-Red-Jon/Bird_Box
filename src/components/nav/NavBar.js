@@ -8,16 +8,13 @@ export const NavBar = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item">
-                <Link className="nav-link" to="/Profile">Profile</Link>
+                <Link className="nav-link" to="/Home">Home</Link>
             </li>
             <li className="navbar__item">
                 <Link className="nav-link" to="/Sightings">Sightings</Link>
             </li>
             <li className="navbar__item">
                 <Link className="nav-link" to="/Birds">All Birds</Link>
-            </li>
-            <li className="navbar__item">
-                <Link className="nav-link" to="/Users">Users</Link>
             </li>
             {
                 (localStorage.getItem("bb_token") !== null) ?
