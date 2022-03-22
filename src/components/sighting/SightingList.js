@@ -3,13 +3,7 @@ import { SightingContext } from "./SightingProvider"
 import { SightingDetail } from "./SightingDetail";
 import "./Sighting.css"
 import { useHistory } from "react-router-dom";
-//New Things
-// import Card from 'react-bootstrap/Card';
-// import { ButtonGroup } from "react-bootstrap"
-// import Button from "react-bootstrap/Button"
-// import { ListGroup } from "react-bootstrap"
-// import ListGroupItem from "react-bootstrap/ListGroupItem"
-// import Collapse from 'react-bootstrap/Collapse'
+
 
 export const SightingList = () => {
     const { sightings, getSightings, deleteSighting } = useContext(SightingContext)

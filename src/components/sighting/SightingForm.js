@@ -125,7 +125,7 @@ export const SightForm = () => {
                 </fieldset>
                 <fieldset>
                     <div>
-                        <label htmlFor="date">Date of Trip:</label>
+                        <label htmlFor="date">Date of Sighting:</label>
                         <input type="date" id="date" name="date" required autoFocus className="form-control"
                             placeholder="Choose Date" onChange={editInputChange}
                             default={sighting.sighted} />
