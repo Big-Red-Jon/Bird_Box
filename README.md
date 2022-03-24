@@ -1,3 +1,42 @@
+# Bird_Box
+Front End Capstone
+
+This is the frontend file for The Bird Box application. You can find the back end repo here: https://github.com/Big-Red-Jon/Bird_Box_Api.
+
+<h1>Why Bird Box?</h1>
+
+The hobby of bird watching has the potential to be more connected than ever before. Roughly millions of submissions can now be tracked worldwide due to our abilities to source data live. This applications purpose is provide a new introduction to bird watching enthusiasts by providing data on birds such as image, scientific names, and common locations:
+Creates a database of bird sightings including where, when, and what was seen.
+Creates a sighting form that can be edited to the users profile.
+Access to a bird database for comparison to live viewings to aide in confirmation.
+All Data in One Accessible Place.
+
+<h2>What did I learn?</h2>
+<ul>
+  <li>How a backend structure relates and connects to a front end app.</li>
+  <li>Forms only get more elaborate when you design your own backend.</li>
+  <li>Documentation is your friend!</li>
+  <li>Work with the MVP in mind.</li>
+  <li>Lean into The Ignorance, Learn from the Mistakes</li>
+  <li>If You Don’t Understand Something, Write it Down, Watch Some Videos</li>
+</ul>
+
+<h2>Stretch Goals</h2>
+<ol>
+  <li>Ability to friend other users</li>
+  <li>A full personal profile with recent activity</li>
+  <li>Profile Editing</li>
+  <li>Social Media Sharing</li>
+  <li>The ability to upload use generated bird images from live sightings.</li>
+  <li>Location Tracking</li>
+  <li>Favoriting Birds</li>
+  <li>Ensure Authorization</li>
+  <li>Pre-population of Create Form</li>
+  <li>Admin Ability</li>
+  <li>User Activity Page (Prior to friending other users)</li>
+  <li>More detailed data on the birds from an external API (to include bird songs, different plumage. </li>
+ </ol>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
