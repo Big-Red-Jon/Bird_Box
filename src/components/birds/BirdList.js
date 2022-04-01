@@ -22,9 +22,6 @@ export const BirdList = () => {
 
     return (
         <>
-
-
-
             <article className="BirdItems">
                 <h1>All Birds</h1>
                 <div className="allCards">
