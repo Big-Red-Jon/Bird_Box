@@ -38,7 +38,7 @@ export const BirdList = () => {
                                         <h3>States Found in:</h3>
                                         {bird.location && bird.location.map((local) => {
                                             return (
-                                                <section key={`bird--${bird.id}`}>
+                                                <section key={`bird.location--${local.id}`}>
                                                     <ul>
                                                         <li>{local?.state}</li>
                                                         {/* <p>Country: {local?.country}</p> */}
