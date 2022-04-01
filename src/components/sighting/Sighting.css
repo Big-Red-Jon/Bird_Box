@@ -63,7 +63,12 @@ select{
 
 .birdButton {
   position: absolute;
-  bottom: 1;
+  bottom: 0;
+  background-color: #008CBA;
+}
+
+.buttonColor {
+  background-color: #008CBA;
 }
 
 

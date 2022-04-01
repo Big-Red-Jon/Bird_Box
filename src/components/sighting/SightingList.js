@@ -36,7 +36,7 @@ export const SightingList = () => {
                                     <p>Bird: {sighting.bird.common_name.CommonName}</p>
                                     <p>Spotted In {sighting.location.state}</p>
                                     <div className="birdButton">
-                                        <button id={sighting.id} onClick={() => history.push(`/Sightings/Edit/${sighting.id}`)}>Edit Sighting</button>
+                                        <button className="buttonColor" id={sighting.id} onClick={() => history.push(`/Sightings/Edit/${sighting.id}`)}>Edit Sighting</button>
                                         <button id={sighting.id} onClick={(e) => handleRelease(e)}>Delete</button>
                                     </div>
                                 </div>
