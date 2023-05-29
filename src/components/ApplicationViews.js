@@ -12,9 +12,9 @@ import { BirdProvider } from "./birds/BirdProvider"
 import { BirdList } from "./birds/BirdList"
 import { BirdDetail } from "./birds/BirdDetail"
 // All Users
-import { ProfileProvider } from "./auth/ProfileProvider"
+// import { ProfileProvider } from "./auth/ProfileProvider"
 import { UsersProvider } from "./users/UserProviders"
-import { ProfilePage } from "./auth/Profile"
+// import { ProfilePage } from "./auth/Profile"
 //Locations
 import { LocationProvider } from "./locations/LocationProvider"
 //Home
